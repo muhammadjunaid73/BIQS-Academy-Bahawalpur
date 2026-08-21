@@ -1,0 +1,11 @@
+# Allow all crawlers to access the entire site
+User-agent: *
+Allow: /
+
+# Disallow access to admin or hidden directories (if any)
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /assets/private/
+
+# Sitemap location (tell search engines where your sitemap is)
+Sitemap: https://biqs-academy-bahawalpur-1.vercel.com/sitemap.xml

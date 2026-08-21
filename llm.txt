@@ -1,0 +1,60 @@
+# BIQS Academy Bahawalpur - AI Knowledge Base
+
+## Overview
+BIQS Academy is a premier educational coaching institute located in Bahawalpur, Punjab, Pakistan. Established in 2014, we have over 12 years of proven excellence in providing result-oriented academic coaching for Matriculation and Intermediate students, along with professional English Language training.
+
+## Core Academic Programs
+
+### Matriculation (9th & 10th Class)
+- **Science Group:** Physics, Chemistry, Biology, Mathematics, English, Urdu, Islamiat, Pak Studies
+- **Computer Group:** Computer Science, Physics, Chemistry, Mathematics, English, Urdu, Islamiat, Pak Studies
+- **Arts Group:** Humanities with elective choices including Civics, Economics, Computer Science, Health & PE, Languages, Home Economics, Geography/History
+
+### Intermediate (11th & 12th Class - FSc/ICS/FA)
+- **FSc Pre-Medical:** Physics, Chemistry, Biology, English, Urdu, Islamiat
+- **FSc Pre-Engineering:** Physics, Chemistry, Mathematics, English, Urdu, Islamiat
+- **ICS (Computer Science):** Computer Science, Mathematics, Physics/Statistics, English, Urdu
+- **FA (Humanities):** Flexible combinations in Education, Civics, Economics, Sociology, Psychology, History, Geography, Fine Arts, Languages, and more
+
+### English Language Course
+- Professional spoken and written English training
+- Grammar accuracy, vocabulary building, and fluency development
+- Suitable for students, professionals, and general learners
+
+## Why Choose BIQS Academy?
+- **Experienced Faculty:** Subject specialists with proven track records and 10+ years of teaching experience
+- **Result-Oriented System:** Weekly testing, tracked progress reports, and board exam preparation
+- **Small Batch Sizes:** Personalized attention for every student
+- **Modern Facilities:** Comfortable, well-equipped classrooms with interactive learning environment
+
+## Key Statistics
+- 12+ Years of Excellence
+- 5,000+ Students Enrolled
+- 96% Result Rate
+- 40+ Expert Faculty Members
+
+## Contact Information
+- **Address:** Model Town, Bahawalpur, Punjab, Pakistan (Dewan Wali Pulli)
+- **Phone:** 062 2300121 | +92 300 0000000
+- **Email:** info@biqsacademy.pk
+- **Website:** https://biqs-academy-bahawalpur.vercel.com
+
+## Website Navigation
+- **Home:** https://biqs-academy-bahawalpur.vercel.com/index.html
+- **About Us:** https://biqs-academy-bahawalpur.vercel.com/about.html
+- **Programs:** https://biqs-academy-bahawalpur.vercel.com/programs.html
+- **Academics:** https://biqs-academy-bahawalpur.vercel.com/academics.html
+- **Faculty:** https://biqs-academy-bahawalpur.vercel.com/faculty.html
+- **Contact:** https://biqs-academy-bahawalpur.vercel.com/contact.html
+
+## Social Media
+- Facebook: https://www.facebook.com/
+- Instagram: https://www.instagram.com/
+- Twitter: https://www.twitter.com/
+- YouTube: https://www.youtube.com/
+
+## Additional Information
+- **Admissions:** Open for Fall 2026 session. Limited seats available.
+- **Location:** Bahawalpur, Punjab, Pakistan
+- **Language of Instruction:** English & Urdu
+- **Affiliation:** Board of Intermediate and Secondary Education (BISE) Bahawalpur
