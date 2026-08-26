@@ -398,59 +398,13 @@
                 <!-- ================= RIGHT COLUMN: FORM & MAP ================= -->
                 <div class="lg:col-span-7 space-y-8">
 
-                    <!-- Send Message Form
-                    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-slate-100">
-                        <h2 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Send Us a Message</h2>
-                        <p class="text-slate-500 text-base mb-8">Feel free to drop us a line below. We will get back
-                            to
-                            you as soon as possible.</p>
-
-                        <form action="#" method="POST" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
-                                <div class="space-y-2">
-                                    <label for="name" class="block text-base font-bold text-slate-700">Full
-                                        Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Ali Khan"
-                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all"
-                                        required>
-                                </div>
-                                <div class="space-y-2">
-                                    <label for="email" class="block text-base font-bold text-slate-700">Email
-                                        Address</label>
-                                    <input type="email" id="email" name="email" placeholder="alinfo@example.com"
-                                        class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all"
-                                        required>
-                                </div>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label for="subject" class="block text-base font-bold text-slate-700">Subject</label>
-                                <input type="text" id="subject" name="subject" placeholder="Admission Inquiry"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all"
-                                    required>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label for="message" class="block text-base font-bold text-slate-700">Message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="How can we help you?"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all resize-none"
-                                    required></textarea>
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-[#064e3b] hover:bg-emerald-900 text-white font-bold py-4 px-6 rounded-xl text-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 group">
-                                <span>Send Message</span>
-                                <i
-                                    class="fa-solid fa-paper-plane group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform"></i>
-                            </button>
-                        </form>
-                    </div> -->
                     <!-- Send Message Form -->
                     <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-slate-100">
                         <h2 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Send Us a Message</h2>
                         <p class="text-slate-600 text-base mb-8">Feel free to drop us a line below. We will get back
                             to you as soon as possible.</p>
-
-                        <form id="contactForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                    
+                        <form id="contactForm" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
                                 <div class="space-y-2">
                                     <label for="name" class="block text-base font-bold text-slate-700">Full
@@ -467,14 +421,14 @@
                                         required>
                                 </div>
                             </div>
-
+                    
                             <div class="space-y-2">
                                 <label for="subject" class="block text-base font-bold text-slate-700">Subject</label>
                                 <input type="text" id="subject" name="subject" placeholder="Admission Inquiry"
                                     class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all"
                                     required>
                             </div>
-
+                    
                             <div class="space-y-2">
                                 <label for="message" class="block text-base font-bold text-slate-700">Message</label>
                                 <textarea id="message" name="message" rows="5" placeholder="How can we help you?"
@@ -489,15 +443,17 @@
                             </button>
                         </form>
                     </div>
-                    Google Map
-                    <div class="bg-white p-2 rounded-3xl shadow-sm border border-slate-100 overflow-hidden h-[300px]">
+                  
+                <!-- Google Map -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100">
+                    <h2 class="text-[22px] font-bold text-slate-900 mb-5 font-sans">Find Us on the Map</h2>
+                    <div class="rounded-2xl overflow-hidden h-[450px]">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1234.7920542554316!2d71.70103540449618!3d29.404977118719355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90921799bc35%3A0x88487fe4945cead!2sCP42%2B5JV%20pul%20dewan%2C%20Jail%20Rd%2C%20Disposal%20Allama%20Iqbal%20Town%2C%20Bahawalpur%2C%20Pakistan!5e1!3m2!1sen!2s!4v1787349132581!5m2!1sen!2s"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="strict-origin-when-cross-origin"></iframe>
-
-
                     </div>
+                </div>
                 </div>
 
             </div>
