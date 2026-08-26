@@ -43,10 +43,10 @@ A fully responsive, SEO-optimized, and high-performance static website for BIQS 
 ## 📊 Lighthouse Scores
 | Category | Score |
 |----------|-------|
-| Performance | 100 |
-| Accessibility | 100 |
-| Best Practices | 100 |
-| SEO | 100 |
+| Performance | 85+ |
+| Accessibility | 90+ |
+| Best Practices | 90+ |
+| SEO | 90+ |
 
 ## 👨‍💻 Developer
 [Muhammad Junaid] — [(https://vercel.com/junaiz)]

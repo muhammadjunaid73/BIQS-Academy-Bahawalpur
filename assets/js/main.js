@@ -212,7 +212,4 @@ document.addEventListener('DOMContentLoaded', function () {
     initStatsCounter();
     initContactForm();
     initEnquiryForm();
-
-    console.log('🔹 BIQS Academy — All scripts loaded successfully!');
-    console.log('🔹 Performance: 100/100 | Accessibility: 100/100 | SEO: 100/100');
 });
