@@ -8,4 +8,4 @@ Allow: /
 # Disallow: /assets/private/
 
 # Sitemap location (tell search engines where your sitemap is)
-Sitemap: https://biqs-academy-bahawalpur.vercel.com/sitemap.xml
+Sitemap: https://biqs-academy-bahawalpur.vercel.app/sitemap.xml

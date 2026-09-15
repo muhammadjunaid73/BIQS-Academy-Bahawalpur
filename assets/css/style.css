@@ -2115,3 +2115,14 @@
     transform: none;
   }
 }
+.social-icon {
+    background-color: #f8fafc; /* slate-50 */
+    color: #475569;            /* slate-600 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #064e3b; /* brand emerald */
+    color: #ffffff;
+}
+

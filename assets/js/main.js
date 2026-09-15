@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '*Subject:* ' + encodeURIComponent(subject) + '%0A' +
                 '*Message:* ' + encodeURIComponent(message);
 
-            const whatsappNumber = '923004016622';
+            const whatsappNumber = '923016283553';
             const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMessage;
 
             window.open(whatsappURL, '_blank', 'noopener,noreferrer');
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const text = 'Hi, my name is ' + name + '. Phone: ' + phone + '. Interested in: ' + prog + '. Message: ' + msg;
-            const whatsappUrl = 'https://wa.me/923004016622?text=' + encodeURIComponent(text);
+            const whatsappUrl = 'https://wa.me/923016283553?text=' + encodeURIComponent(text);
 
             const successDiv = document.getElementById('formSuccess');
             if (successDiv) successDiv.classList.remove('hidden');
@@ -213,3 +213,4 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initEnquiryForm();
 });
+

@@ -4,7 +4,7 @@
 A fully responsive, SEO-optimized, and high-performance static website for BIQS Academy — a premier educational coaching institute in Bahawalpur, Pakistan.
 
 ## 🚀 Live Demo
-🔗 [https://biqs-academy-bahawalpur.vercel.com](https://biqs-academy-bahawalpur.vercel.com)
+🔗 [https://biqs-academy-bahawalpur.vercel.app](https://biqs-academy-bahawalpur.vercel.app)
 
 ## ✨ Key Features
 - ✅ 90+/100 Lighthouse Performance Score
@@ -32,7 +32,7 @@ A fully responsive, SEO-optimized, and high-performance static website for BIQS 
 ├── assets/
 │ ├── css/ # Compiled Tailwind + Custom Styles
 │ ├── js/ # Main JavaScript
-│ └── images/ # Images
+│ └── images/ # Images + Logo + others images 
 ├── robots.txt # Search Engine Crawling
 ├── sitemap.xml # SEO Sitemap
 ├── llm.txt # AI/GEO Optimization
