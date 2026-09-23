@@ -1,10 +1,9 @@
-// ============================================================
+
 // assets/js/main.js — Consolidated JavaScript for BIQS Academy
-// ============================================================
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ===== 1. MOBILE MENU TOGGLE =====
+    // 1. MOBILE MENU TOGGLE 
     function initMobileMenu() {
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== 2. BACK TO TOP BUTTON =====
+    // 2. BACK TO TOP BUTTON 
     function initBackToTop() {
         const topBtn = document.getElementById('topBtn');
         if (!topBtn) return;
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== 3. SMOOTH SCROLL FOR ANCHOR LINKS =====
+    //  3. SMOOTH SCROLL FOR ANCHOR LINKS 
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== 4. STATS COUNTER ANIMATION (Index Page) =====
+    // 4. STATS COUNTER ANIMATION (Index Page) 
     function initStatsCounter() {
         const statNumbers = document.querySelectorAll('.stat-number');
         const statsSection = document.getElementById('stats');
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(statsSection);
     }
 
-    // ===== 5. CONTACT FORM (WhatsApp Handler) =====
+    // 5. CONTACT FORM (WhatsApp Handler)
     function initContactForm() {
         const contactForm = document.getElementById('contactForm');
         if (!contactForm) return;
@@ -177,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== 6. WHATSAPP ENQUIRY FORM (Programs Page) =====
+    //  6. WHATSAPP ENQUIRY FORM (Programs Page)
     function initEnquiryForm() {
         const enquiryForm = document.getElementById('enquiryForm');
         if (!enquiryForm) return;
@@ -205,6 +204,66 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ===== FAQ ACCORDION =====
+    function initFaqAccordion() {
+        const faqList = document.getElementById('faqList');
+        if (!faqList) return;
+
+        const toggles = faqList.querySelectorAll('.faq-toggle');
+
+        toggles.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const panel = btn.nextElementSibling;
+                const icon = btn.querySelector('.faq-icon');
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+                btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                panel.classList.toggle('hidden');
+                icon.textContent = isOpen ? '+' : '−';
+            });
+        });
+    }
+    // ===== ACTIVE NAV STATE =====
+    function initActiveNav() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+    }
+    // ================= Faculty Card Intersection Observer =================
+
+    const facultyCards = document.querySelectorAll(".faculty-card");
+
+    if (facultyCards.length) {
+        const facultyObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            }
+        );
+
+        facultyCards.forEach((card) => {
+            facultyObserver.observe(card);
+        });
+    }
+
+
+  
+
+
     // ===== 7. INITIALIZE ALL =====
     initMobileMenu();
     initBackToTop();
@@ -212,5 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initStatsCounter();
     initContactForm();
     initEnquiryForm();
+    initFaqAccordion();
+    initActiveNav();
 });
 
