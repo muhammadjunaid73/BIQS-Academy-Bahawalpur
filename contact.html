@@ -17,12 +17,17 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#064e3b">
 
-    <!-- Font Awesome Deferred Load -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
+    <!-- Preconnect for Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Font Awesome (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -44,7 +49,6 @@
         content="Contact BIQS Academy Bahawalpur for admissions. Call 062-2300121 or visit our campus today.">
     <meta name="twitter:image" content="https://biqs-academy-bahawalpur.vercel.app/assets/images/og-cover.jpg">
 
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,32 +68,31 @@
         },
         "telephone": "+92-62-2300121",
         "email": "info@biqsacademy.pk",
-       
-    "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Saturday"
-      ],
-      "opens": "16:00",
-      "closes": "20:30"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Friday",
-      "opens": "15:30",
-      "closes": "20:00"
-    }
-  ]
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Saturday"
+            ],
+            "opens": "16:00",
+            "closes": "20:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "15:30",
+            "closes": "20:00"
+          }
+        ]
       }
     }
     </script>
-    <link rel="stylesheet" href="assets/css/style.css">
 
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">

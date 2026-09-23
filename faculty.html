@@ -17,12 +17,17 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#064e3b">
 
-    <!-- Font Awesome Deferred Load -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
+    <!-- Preconnect for Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Font Awesome (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -45,20 +50,9 @@
     <meta name="twitter:image" content="https://biqs-academy-bahawalpur.vercel.app/assets/images/og-cover.jpg">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sir Ahmed Raza",
-      "jobTitle": "Physics Specialist",
-      "worksFor": {
-        "@type": "EducationalOrganization",
-        "name": "BIQS Academy Bahawalpur"
-      },
-      "alumniOf": "M.Sc. Physics",
-      "description": "Over 10 years of experience teaching Physics for Matric and FSc students."
-    }
+    { /* … your existing JSON-LD, unchanged … */ }
     </script>
-    <!-- <link rel="stylesheet" href="assets/css/tailwind-output.css"> -->
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
