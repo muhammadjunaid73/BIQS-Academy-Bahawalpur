@@ -17,28 +17,18 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#064e3b">
 
-
     <!-- Preconnect for Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Asynchronous Font Loading with Fallback -->
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet">
-    </noscript>
+    <!-- Fonts (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 
-    <!-- Font Awesome - Optimized Load -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
+    <!-- Font Awesome (CSP-safe: no inline event handlers) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://biqs-academy-bahawalpur.vercel.app/">
@@ -56,37 +46,39 @@
     <meta property="twitter:image" content="https://biqs-academy-bahawalpur.vercel.app/assets/images/og-cover.jpg">
 
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "BIQS Academy Bahawalpur",
-  "alternateName": "BIQS Academy",
-  "url": "https://biqs-academy-bahawalpur.vercel.app/",
-  "logo": "https://biqs-academy-bahawalpur.vercel.app/assets/images/logo.png",
-  "description": "Result-oriented coaching for 9th, 10th, 11th, 12th classes and English Language training in Bahawalpur since March 2026.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Dewan Wali Pulli, Bahawalpur",
-    "addressLocality": "Bahawalpur",
-    "addressRegion": "Punjab",
-    "postalCode": "63100",
-    "addressCountry": "PK"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "29.3956",
-    "longitude": "71.6833"
-  },
-  "telephone": "+923016283553",
-  "email": "info@biqsacademy.pk",
-  "foundingDate": "2026",
-  "openingHours": "Mo-Sa 15:00-20:00",
-  "priceRange": "$$",
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61590600022047",
-    "https://www.instagram.com/biqs_academy_bwp",
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "BIQS Academy Bahawalpur",
+      "alternateName": "BIQS Academy",
+      "url": "https://biqs-academy-bahawalpur.vercel.app/",
+      "logo": "https://biqs-academy-bahawalpur.vercel.app/assets/images/logo.png",
+      "description": "Result-oriented coaching for 9th, 10th, 11th, 12th classes and English Language training in Bahawalpur since March 2026.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dewan Wali Pulli, Bahawalpur",
+        "addressLocality": "Bahawalpur",
+        "addressRegion": "Punjab",
+        "postalCode": "63100",
+        "addressCountry": "PK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "29.3956",
+        "longitude": "71.6833"
+      },
+      "telephone": "+923016283553",
+      "email": "info@biqsacademy.pk",
+      "foundingDate": "2026",
+      "openingHours": "Mo-Sa 15:00-20:00",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61590600022047",
+        "https://www.instagram.com/biqs_academy_bwp"
+      ]
+    }
+    </script>
+
     <!-- Tailwind CSS (pre-built, static — replaces runtime CDN compiler for performance) -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -331,7 +323,7 @@
                     <div class="text-xs uppercase tracking-widest text-emerald-200 font-medium">Result Rate</div>
                 </div>
                 <div>
-                    <div class="text-3xl lg:text-4xl font-extrabold mb-1 stat-number" data-target="8+" data-suffix="+">0
+                    <div class="text-3xl lg:text-4xl font-extrabold mb-1 stat-number" data-target="8" data-suffix="+">0
                     </div>
                     <div class="text-xs uppercase tracking-widest text-emerald-200 font-medium">Expert Faculty</div>
                 </div>
@@ -364,7 +356,7 @@
                                 <p class="text-xs text-slate-500">Excellence</p>
                             </div>
                         </div>
-                    </div> -
+                    </div>
                 </div>
 
                 <!-- Right Side: Content & Button -->
@@ -743,7 +735,7 @@
                     </div>
                     <!-- Faculty Card 4  -->
                     <div
-                      class="faculty-card bg-white p-8 rounded-3xl text-center border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                        class="faculty-card bg-white p-8 rounded-3xl text-center border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                         <div
                             class="w-24 h-24 rounded-full mx-auto mb-5 overflow-hidden shadow-inner ring-4 ring-emerald-50">
                             <img src="assets/images/faculty/usman-malik.webp"
