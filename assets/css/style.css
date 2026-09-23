@@ -2125,21 +2125,7 @@
     background-color: #064e3b; /* brand emerald */
     color: #ffffff;
 }
-/* Active nav link — JS will add this class */
-.nav-link.active {
-    color: #064e3b;
-    font-weight: 700;
-}
-
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #064e3b;
-}
+/
 
 /* Faculty cards reveal animation */
 .faculty-card {

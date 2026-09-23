@@ -223,18 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-    // ===== ACTIVE NAV STATE =====
-    function initActiveNav() {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === currentPage) {
-                link.classList.add('active');
-                link.setAttribute('aria-current', 'page');
-            }
-        });
-    }
     // ================= Faculty Card Intersection Observer =================
 
     const facultyCards = document.querySelectorAll(".faculty-card");
@@ -272,6 +261,6 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initEnquiryForm();
     initFaqAccordion();
-    initActiveNav();
+   
 });
 
