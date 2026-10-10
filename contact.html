@@ -141,16 +141,17 @@
                     aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-3 group">
-                <img src="assets/images/logo-emblem.png" alt="BIQS Academy Bahawalpur"
-                    class="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105">
-                <div class="leading-tight">
-                    <span class="block font-serif font-extrabold text-lg text-slate-900 tracking-wide">BIQS
-                        ACADEMY</span>
-                    <span class="block text-[10px] font-bold text-[#064e3b] tracking-widest uppercase">BAHAWALPUR</span>
-                </div>
-            </a>
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <img src="assets/images/logo-emblem.png" alt="BIQS Academy Bahawalpur"
+                        class="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105">
+                    <div class="leading-tight">
+                        <span class="block font-serif font-extrabold text-lg text-slate-900 tracking-wide">BIQS
+                            ACADEMY</span>
+                        <span
+                            class="block text-[10px] font-bold text-[#064e3b] tracking-widest uppercase">BAHAWALPUR</span>
+                    </div>
+                </a>
             </div>
 
             <!-- Desktop Nav (Right Aligned with Underline Hover Effect) -->
@@ -246,6 +247,12 @@
                     Contact
                     <span
                         class="absolute left-0 bottom-0 w-0 h-0.5 bg-[#064e3b] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </a>
+            </div>
+            <div class="pt-4 sm:hidden">
+                <a href="contact.html#send-message"
+                    class="block w-full text-center bg-[#064e3b] hover:bg-emerald-900 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-md transition-all">
+                    Apply Now
                 </a>
             </div>
         </div>
@@ -529,7 +536,8 @@
                 <div class="lg:col-span-7 space-y-8">
 
                     <!-- Send Message Form -->
-                    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-slate-100">
+                    <div id="send-message"
+                        class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-slate-100 scroll-mt-32">
                         <h2 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Send Us a Message</h2>
                         <p class="text-slate-600 text-base mb-8">Feel free to drop us a line below. We will get back
                             to you as soon as possible.</p>
@@ -553,10 +561,57 @@
                             </div>
 
                             <div class="space-y-2">
-                                <label for="subject" class="block text-base font-bold text-slate-700">Subject</label>
-                                <input type="text" id="subject" name="subject" placeholder="Admission Inquiry"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all"
-                                    required>
+                                <label for="subject" class="block text-base font-bold text-slate-700">Query
+                                    Topic</label>
+                                <select id="subject" name="subject" required
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-[#064e3b]/30 focus:border-[#064e3b] transition-all">
+                                    <option value="" disabled selected>Select your query type</option>
+
+                                    <optgroup label="General">
+                                        <option value="Admission Inquiry">General Admission Inquiry</option>
+                                        <option value="Free Consultation">Free Consultation</option>
+                                        <option value="Fee Details">Fee Details</option>
+                                        <option value="Class Timings">Class Timings / Schedule</option>
+                                        <option value="Campus Visit">Campus Visit</option>
+                                    </optgroup>
+
+                                    <optgroup label="Matric (9th &amp; 10th)">
+                                        <option value="Admission Inquiry - 9th Science Group">9th Science Group</option>
+                                        <option value="Admission Inquiry - 9th Computer Group">9th Computer Group
+                                        </option>
+                                        <option value="Admission Inquiry - 9th Arts Group">9th Arts Group</option>
+                                        <option value="Admission Inquiry - 10th Science Group">10th Science Group
+                                        </option>
+                                        <option value="Admission Inquiry - 10th Computer Group">10th Computer Group
+                                        </option>
+                                        <option value="Admission Inquiry - 10th Arts Group">10th Arts Group</option>
+                                    </optgroup>
+
+                                    <optgroup label="Intermediate Part 1 (11th)">
+                                        <option value="Admission Inquiry - FSc Pre-Medical (Part 1)">FSc Pre-Medical
+                                        </option>
+                                        <option value="Admission Inquiry - FSc Pre-Engineering (Part 1)">FSc
+                                            Pre-Engineering</option>
+                                        <option value="Admission Inquiry - ICS Part 1">ICS</option>
+                                        <option value="Admission Inquiry - FA Part 1 (Humanities)">FA (Humanities)
+                                        </option>
+                                    </optgroup>
+
+                                    <optgroup label="Intermediate Part 2 (12th)">
+                                        <option value="Admission Inquiry - Pre-Medical Part 2">Pre-Medical</option>
+                                        <option value="Admission Inquiry - Pre-Engineering Part 2">Pre-Engineering
+                                        </option>
+                                        <option value="Admission Inquiry - ICS Part 2">ICS</option>
+                                        <option value="Admission Inquiry - FA Part 2 (Humanities)">FA (Humanities)
+                                        </option>
+                                    </optgroup>
+
+                                    <optgroup label="Other Courses">
+                                        <option value="English Language Course">English Language Course</option>
+                                    </optgroup>
+
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
 
                             <div class="space-y-2">
@@ -811,14 +866,15 @@
     <!-- ================= FOOTER ================= -->
     <footer class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        <div class="space-y-4">
-            <div class="flex items-center gap-3">
-                <img src="assets/images/logo-emblem.png" alt="BIQS Academy Bahawalpur" class="h-14 w-14 object-contain">
-                <h3 class="text-white font-serif font-bold text-lg">BIQS Academy</h3>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/logo-emblem.png" alt="BIQS Academy Bahawalpur"
+                        class="h-14 w-14 object-contain">
+                    <h3 class="text-white font-serif font-bold text-lg">BIQS Academy</h3>
+                </div>
+                <p class="text-sm leading-relaxed">Building Bahawalpur's next generation of achievers through
+                    disciplined, quality education.</p>
             </div>
-            <p class="text-sm leading-relaxed">Building Bahawalpur's next generation of achievers through
-                disciplined, quality education.</p>
-        </div>
             <div class="space-y-4">
                 <h3 class="text-white font-serif font-bold text-lg">Quick Links</h3>
                 <ul class="space-y-2 text-sm">

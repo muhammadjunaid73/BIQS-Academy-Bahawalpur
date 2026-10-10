@@ -1,75 +1,91 @@
-
 // assets/js/main.js — Consolidated JavaScript for BIQS Academy
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // 1. MOBILE MENU TOGGLE 
+    // 1. MOBILE MENU TOGGLE
     function initMobileMenu() {
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const header = document.getElementById('siteHeader');
 
         if (!menuBtn || !mobileMenu) return;
 
-        menuBtn.addEventListener('click', function () {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
-            menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-
-            // Toggle icon: bars <-> xmark
+        function setIcon(open) {
             const icon = menuBtn.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-xmark');
+            if (!icon) return;
+            icon.classList.toggle('fa-bars', !open);
+            icon.classList.toggle('fa-xmark', open);
+        }
+
+        function isOpen() {
+            return !mobileMenu.classList.contains('hidden');
+        }
+
+        function setMenu(open) {
+            mobileMenu.classList.toggle('hidden', !open);
+            menuBtn.setAttribute('aria-expanded', String(open));
+            setIcon(open);
+        }
+
+        // Make sure the menu always starts closed
+        setMenu(false);
+
+        // Open / close with the hamburger button
+        menuBtn.addEventListener('click', function () {
+            setMenu(!isOpen());
+        });
+
+        // Close when any link inside the mobile menu is clicked
+        mobileMenu.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setMenu(false);
+        });
+
+        // Close when clicking anywhere outside the header
+        document.addEventListener('click', function (e) {
+            if (isOpen() && header && !header.contains(e.target)) setMenu(false);
+        });
+
+        // Close with Escape and return focus to the button
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isOpen()) {
+                setMenu(false);
+                menuBtn.focus();
             }
         });
 
-        // Close menu on link click (mobile)
-        mobileMenu.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                mobileMenu.classList.add('hidden');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            });
+        // Close if the URL hash changes (in-page links)
+        window.addEventListener('hashchange', function () {
+            setMenu(false);
         });
 
-        // Close menu on resize to desktop
+        // Back/forward button can restore the page from cache with the menu still open
+        window.addEventListener('pageshow', function () {
+            setMenu(false);
+        });
+
+        // Close when resizing up to desktop
         window.addEventListener('resize', function () {
-            if (window.innerWidth >= 1024) {
-                mobileMenu.classList.add('hidden');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                const icon = menuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            }
+            if (window.innerWidth >= 1024) setMenu(false);
         });
     }
 
-    // 2. BACK TO TOP BUTTON 
+    // 2. BACK TO TOP BUTTON
     function initBackToTop() {
         const topBtn = document.getElementById('topBtn');
         if (!topBtn) return;
 
         let ticking = false;
+
         window.addEventListener('scroll', function () {
-            if (!ticking) {
-                window.requestAnimationFrame(function () {
-                    if (window.scrollY > 400) {
-                        topBtn.classList.remove('hidden');
-                        topBtn.classList.add('flex');
-                    } else {
-                        topBtn.classList.add('hidden');
-                        topBtn.classList.remove('flex');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
+            if (ticking) return;
+
+            window.requestAnimationFrame(function () {
+                const show = window.scrollY > 400;
+                topBtn.classList.toggle('hidden', !show);
+                topBtn.classList.toggle('flex', show);
+                ticking = false;
+            });
+            ticking = true;
         }, { passive: true });
 
         topBtn.addEventListener('click', function () {
@@ -77,12 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    //  3. SMOOTH SCROLL FOR ANCHOR LINKS 
+    // 3. SMOOTH SCROLL FOR ANCHOR LINKS
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href === '#' || href === '') return;
+
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -92,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 4. STATS COUNTER ANIMATION (Index Page) 
+    // 4. STATS COUNTER ANIMATION (Index Page)
     function initStatsCounter() {
         const statNumbers = document.querySelectorAll('.stat-number');
         const statsSection = document.getElementById('stats');
@@ -118,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 el.textContent = Math.round(eased * target).toLocaleString('en-US') + suffix;
                 if (progress < 1) requestAnimationFrame(tick);
             }
+
             requestAnimationFrame(tick);
         }
 
@@ -133,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(statsSection);
     }
 
-    // 5. CONTACT FORM (WhatsApp Handler)
+    // 5. CONTACT FORM (WhatsApp handler)
     function initContactForm() {
         const contactForm = document.getElementById('contactForm');
         if (!contactForm) return;
@@ -158,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 '*Subject:* ' + encodeURIComponent(subject) + '%0A' +
                 '*Message:* ' + encodeURIComponent(message);
 
-            const whatsappNumber = '923016283553';
+            const whatsappNumber = '923266735959';
             const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMessage;
 
             window.open(whatsappURL, '_blank', 'noopener,noreferrer');
@@ -176,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    //  6. WHATSAPP ENQUIRY FORM (Programs Page)
+    // 6. WHATSAPP ENQUIRY FORM (Programs page)
     function initEnquiryForm() {
         const enquiryForm = document.getElementById('enquiryForm');
         if (!enquiryForm) return;
@@ -194,7 +212,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const text = 'Hi, my name is ' + name + '. Phone: ' + phone + '. Interested in: ' + prog + '. Message: ' + msg;
+            const text = 'Hi, my name is ' + name + '. Phone: ' + phone +
+                '. Interested in: ' + prog + '. Message: ' + msg;
             const whatsappUrl = 'https://wa.me/923016283553?text=' + encodeURIComponent(text);
 
             const successDiv = document.getElementById('formSuccess');
@@ -204,14 +223,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== FAQ ACCORDION =====
+    // 7. FAQ ACCORDION
     function initFaqAccordion() {
         const faqList = document.getElementById('faqList');
         if (!faqList) return;
 
-        const toggles = faqList.querySelectorAll('.faq-toggle');
-
-        toggles.forEach(function (btn) {
+        faqList.querySelectorAll('.faq-toggle').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const panel = btn.nextElementSibling;
                 const icon = btn.querySelector('.faq-icon');
@@ -224,36 +241,94 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ================= Faculty Card Intersection Observer =================
+    // 9. APPLY NOW LINKS -> CONTACT FORM (subject comes from the program card)
+    function initApplyLinks() {
+        const DEFAULT_SUBJECT = 'Admission Inquiry';
 
-    const facultyCards = document.querySelectorAll(".faculty-card");
+        function clean(text) {
+            return (text || '').replace(/\s+/g, ' ').trim();
+        }
 
-    if (facultyCards.length) {
-        const facultyObserver = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            }
-        );
+        function getProgramSubject(link) {
+            const card = link.closest('[id^="matric-"], [id^="inter-"]');
+            if (!card) return DEFAULT_SUBJECT;
 
-        facultyCards.forEach((card) => {
+            const heading = card.querySelector('h3');
+            const title = clean(heading && heading.textContent);
+            const label = clean(
+                heading && heading.previousElementSibling && heading.previousElementSibling.textContent
+            );
+
+            if (!title) return DEFAULT_SUBJECT;
+
+            // "FSc Pre-Medical" + "Part 1" -> "FSc Pre-Medical (Part 1)"
+            const part = /^Part/i.test(label) && !/Part/i.test(title) ? ' (' + label + ')' : '';
+            return DEFAULT_SUBJECT + ' - ' + title + part;
+        }
+
+        document.querySelectorAll('a[href="contact.html"]').forEach(function (link) {
+            const custom = link.dataset.subject;
+            if (!custom && !/apply now/i.test(link.textContent)) return;
+
+            const subject = custom || getProgramSubject(link);
+            link.setAttribute(
+                'href',
+                'contact.html?subject=' + encodeURIComponent(subject) + '#send-message'
+            );
+        });
+    }
+    // 10. CONTACT PAGE: PREFILL SUBJECT FROM THE URL (works with <input> or <select>)
+    function initContactPrefill() {
+        const subjectField = document.getElementById('subject');
+        if (!subjectField) return;
+
+        const subject = (new URLSearchParams(window.location.search).get('subject') || '')
+            .trim()
+            .slice(0, 120);
+        if (!subject) return;
+
+        if (subjectField.tagName !== 'SELECT') {
+            subjectField.value = subject;
+            return;
+        }
+
+        // If the URL subject isn't in the list, add it so it is still selected
+        const hasOption = Array.from(subjectField.options).some(function (opt) {
+            return opt.value === subject;
+        });
+
+        if (!hasOption) {
+            const extra = document.createElement('option');
+            extra.value = subject;
+            extra.textContent = subject;
+            subjectField.appendChild(extra);
+        }
+
+        subjectField.value = subject;
+    }
+    // 8. FACULTY CARD REVEAL
+    function initFacultyReveal() {
+        const facultyCards = document.querySelectorAll('.faculty-card');
+        if (!facultyCards.length) return;
+
+        const facultyObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        facultyCards.forEach(function (card) {
             facultyObserver.observe(card);
         });
     }
 
-
-  
-
-
-    // ===== 7. INITIALIZE ALL =====
+    // INITIALIZE ALL
     initMobileMenu();
     initBackToTop();
     initSmoothScroll();
@@ -261,6 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initEnquiryForm();
     initFaqAccordion();
-   
+    initFacultyReveal();
+    initApplyLinks();
+    initContactPrefill();
 });
-
