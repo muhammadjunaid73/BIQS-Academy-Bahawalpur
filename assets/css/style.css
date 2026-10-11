@@ -2148,3 +2148,18 @@
     }
 }
 
+/* Show the desktop navbar from 860px (Chrome "Desktop site" on phones renders at ~980px) */
+@media (min-width: 860px) and (max-width: 1023px) {
+  header nav.lg\:flex {
+    display: flex;
+    gap: 1.1rem;
+    margin-right: 1rem;
+    font-size: 14px;
+  }
+
+  #menuBtn,
+  #mobileMenu {
+    display: none;
+  }
+}
+

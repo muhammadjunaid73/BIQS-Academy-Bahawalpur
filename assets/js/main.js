@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Close when resizing up to desktop
         window.addEventListener('resize', function () {
-            if (window.innerWidth >= 1024) setMenu(false);
+            if (window.innerWidth >= 860) setMenu(false);
         });
     }
 
@@ -239,9 +239,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon.textContent = isOpen ? '+' : '−';
             });
         });
-    }
 
-    // 9. APPLY NOW LINKS -> CONTACT FORM (subject comes from the program card)
+
+        // 8. FACULTY CARD REVEAL
+        function initFacultyReveal() {
+            const facultyCards = document.querySelectorAll('.faculty-card');
+            if (!facultyCards.length) return;
+
+            const facultyObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            facultyCards.forEach(function (card) {
+                facultyObserver.observe(card);
+            });
+        }
+    }
+    // 9. APPLY NOW LINKS -> CONTACT FORM
     function initApplyLinks() {
         const DEFAULT_SUBJECT = 'Admission Inquiry';
 
@@ -249,9 +271,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return (text || '').replace(/\s+/g, ' ').trim();
         }
 
-        function getProgramSubject(link) {
+        // "FSc Pre-Medical" + "Part 1" -> "FSc Pre-Medical (Part 1)"
+        function getProgramName(link) {
             const card = link.closest('[id^="matric-"], [id^="inter-"]');
-            if (!card) return DEFAULT_SUBJECT;
+            if (!card) return '';
 
             const heading = card.querySelector('h3');
             const title = clean(heading && heading.textContent);
@@ -259,74 +282,51 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading && heading.previousElementSibling && heading.previousElementSibling.textContent
             );
 
-            if (!title) return DEFAULT_SUBJECT;
-
-            // "FSc Pre-Medical" + "Part 1" -> "FSc Pre-Medical (Part 1)"
+            if (!title) return '';
             const part = /^Part/i.test(label) && !/Part/i.test(title) ? ' (' + label + ')' : '';
-            return DEFAULT_SUBJECT + ' - ' + title + part;
+            return title + part;
         }
 
-        document.querySelectorAll('a[href="contact.html"]').forEach(function (link) {
-            const custom = link.dataset.subject;
-            if (!custom && !/apply now/i.test(link.textContent)) return;
+        document
+            .querySelectorAll('a[href="contact.html"], a[href="contact.html#send-message"]')
+            .forEach(function (link) {
+                const isApply = /apply now/i.test(link.textContent);
+                if (!link.dataset.subject && !isApply) return;
 
-            const subject = custom || getProgramSubject(link);
-            link.setAttribute(
-                'href',
-                'contact.html?subject=' + encodeURIComponent(subject) + '#send-message'
-            );
-        });
+                const params = new URLSearchParams();
+                params.set('subject', link.dataset.subject || DEFAULT_SUBJECT);
+
+                const program = getProgramName(link);
+                const message =
+                    link.dataset.message || (program ? 'I would like to apply for ' + program + '.' : '');
+                if (message) params.set('message', message);
+
+                link.setAttribute('href', 'contact.html?' + params.toString() + '#send-message');
+            });
     }
-    // 10. CONTACT PAGE: PREFILL SUBJECT FROM THE URL (works with <input> or <select>)
+
+    // 10. CONTACT PAGE: PREFILL SUBJECT AND MESSAGE FROM THE URL
     function initContactPrefill() {
         const subjectField = document.getElementById('subject');
-        if (!subjectField) return;
+        const messageField = document.getElementById('message');
+        const params = new URLSearchParams(window.location.search);
 
-        const subject = (new URLSearchParams(window.location.search).get('subject') || '')
-            .trim()
-            .slice(0, 120);
-        if (!subject) return;
-
-        if (subjectField.tagName !== 'SELECT') {
-            subjectField.value = subject;
-            return;
-        }
-
-        // If the URL subject isn't in the list, add it so it is still selected
-        const hasOption = Array.from(subjectField.options).some(function (opt) {
-            return opt.value === subject;
-        });
-
-        if (!hasOption) {
-            const extra = document.createElement('option');
-            extra.value = subject;
-            extra.textContent = subject;
-            subjectField.appendChild(extra);
-        }
-
-        subjectField.value = subject;
-    }
-    // 8. FACULTY CARD REVEAL
-    function initFacultyReveal() {
-        const facultyCards = document.querySelectorAll('.faculty-card');
-        if (!facultyCards.length) return;
-
-        const facultyObserver = new IntersectionObserver(function (entries, observer) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
+        // Subject: only accepted if it matches one of the dropdown options
+        const subject = (params.get('subject') || '').trim();
+        if (subjectField && subject) {
+            const hasOption = Array.from(subjectField.options).some(function (opt) {
+                return opt.value === subject;
             });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
+            if (hasOption) subjectField.value = subject;
+        }
 
-        facultyCards.forEach(function (card) {
-            facultyObserver.observe(card);
-        });
+        // Message: prefilled only when the box is empty
+        const message = (params.get('message') || '').trim().slice(0, 300);
+        if (messageField && message && !messageField.value.trim()) {
+            messageField.value = message;
+        }
     }
+    
 
     // INITIALIZE ALL
     initMobileMenu();
