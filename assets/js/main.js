@@ -239,30 +239,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon.textContent = isOpen ? '+' : '−';
             });
         });
-
-
-        // 8. FACULTY CARD REVEAL
-        function initFacultyReveal() {
-            const facultyCards = document.querySelectorAll('.faculty-card');
-            if (!facultyCards.length) return;
-
-            const facultyObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            facultyCards.forEach(function (card) {
-                facultyObserver.observe(card);
-            });
-        }
     }
+
+    // 8. FACULTY CARD REVEAL
+    function initFacultyReveal() {
+        const facultyCards = document.querySelectorAll('.faculty-card');
+        if (!facultyCards.length) return;
+
+        const facultyObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        facultyCards.forEach(function (card) {
+            facultyObserver.observe(card);
+        });
+    }
+
     // 9. APPLY NOW LINKS -> CONTACT FORM
     function initApplyLinks() {
         const DEFAULT_SUBJECT = 'Admission Inquiry';
@@ -326,17 +326,25 @@ document.addEventListener('DOMContentLoaded', function () {
             messageField.value = message;
         }
     }
-    
 
     // INITIALIZE ALL
-    initMobileMenu();
-    initBackToTop();
-    initSmoothScroll();
-    initStatsCounter();
-    initContactForm();
-    initEnquiryForm();
-    initFaqAccordion();
-    initFacultyReveal();
-    initApplyLinks();
-    initContactPrefill();
-});
+    [
+        initMobileMenu,
+        initBackToTop,
+        initSmoothScroll,
+        initStatsCounter,
+        initContactForm,
+        initEnquiryForm,
+        initFaqAccordion,
+        initFacultyReveal,
+        initApplyLinks,
+        initContactPrefill
+    ].forEach(function (init) {
+        try {
+            init();
+        } catch (error) {
+            console.error('Init failed:', init.name, error);
+        }
+    });
+
+}); 
